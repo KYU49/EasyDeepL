@@ -1,0 +1,10 @@
+# Easy DeepL
+## 概要
+段落にマウスを合わせると、DeepL翻訳(英->日)へのリンクが表示されるブックマークレットです。
+
+主に論文を"Read Online"で読む場合を想定して作ってあります。  
+※そのため、リンクの表示はHTMLの"p"タグ要素に限定しています。
+
+## 使い方
+### Firefox
+この「[翻訳](<javascript%3A%7Bwindow.translator%3D%7Bstate%3A1%2Cover%3Anull%2Ctarget%3Anull%2Chover%3Afunction(e)%7Bif(translator.target%3D%3Dnull%7C%7C!translator.target.isEqualNode(translator.getP(e.target)))%7Bif(translator.state%3D%3D2)%7Btranslator.reset(e)%3B%7Dtranslator.target%3Dtranslator.getP(e.target)%3Btranslator.over%3Ddocument.createElement(%22div%22)%3Btranslator.over.appendChild(document.createTextNode(%22%E7%BF%BB%E8%A8%B3%22))%3Btranslator.over.style%3D%22cursor%3Apointer%3Bcolor%3Argba(255%2C255%2C255%2C0.5)%3Bposition%3Afixed%3Bz-index%3A2147483647%3Bbackground-color%3Argba(0%2C0%2C0%2C0.5)%3Bborder-radius%3A5px%3Bpadding%3A4px10px%3B%22%3Bdocument.body.appendChild(translator.over)%3Brect%3Dtranslator.target.getBoundingClientRect()%3BoverS%3Dtranslator.over.style%3BoverS.right%3D(document.body.clientWidth-rect.right)%2B%22px%22%3BoverS.top%3Drect.top%2B%22px%22%3Btranslator.state%3D2%3Btranslator.over.addEventListener(%22mouseup%22%2Cfunction(e)%7Btext%3DencodeURIComponent(translator.target.innerText)%3Btext%3Dtext.replace(%2F%252F%2Fg%2C%22%255C%252F%22)%3Bwindow.open(%22https%3A%2F%2Fwww.deepl.com%2Ftranslator%23en%2Fja%2F%22%2Btext)%3B%7D)%3B%7D%7D%2Creset%3Afunction(e)%7Bdocument.body.removeChild(translator.over)%3Btranslator.target%3Dnull%3Btranslator.state%3D1%3B%7D%2CgetP%3Afunction(p)%7Bif(p.tagName%3D%3D%22P%22)%7Breturn%20p%3B%7Delse%7Breturn%20translator.getP(p.parentNode)%3B%7D%7D%7D%3Bp%3Ddocument.getElementsByTagName(%22p%22)%3Bfor(i%3D0%3Bi%3Cp.length%3Bi%2B%2B)%7Bp%5Bi%5D.addEventListener(%22mouseover%22%2Cfunction(e)%7Btranslator.hover(e)%3B%7D)%3B%7Dwindow.addEventListener(%22scroll%22%2Cfunction(e)%7Btranslator.reset(e)%3B%7D)%3B%7D>)」という文字を右クリックし、「リンクをブックマーク」を選択してください。
